@@ -19,9 +19,6 @@ const initialValues = computed(() => ({
   phone: '',
   dietary: '',
   companions: '',
-  needsTransport: false,
-  accommodation: '',
-  song: '',
   message: '',
   website: '',
 }))
@@ -52,9 +49,6 @@ async function onSubmit(values: Record<string, unknown>): Promise<void> {
       phone: v.phone,
       dietary: v.dietary,
       companions: v.companions,
-      needsTransport: v.needsTransport,
-      accommodation: v.accommodation,
-      song: v.song,
       message: v.message,
       submittedAt: new Date().toISOString(),
     })

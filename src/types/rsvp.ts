@@ -8,9 +8,6 @@ export interface RsvpPayload {
   phone: string
   dietary: string
   companions: string
-  needsTransport: boolean
-  accommodation: string
-  song: string
   message: string
   submittedAt: string
 }

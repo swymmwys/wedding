@@ -3,6 +3,7 @@
 #
 # Default base path is /REPOSITORY_NAME/ (project site at user.github.io/repo/).
 # For a user/org site (repo named YOUR_USERNAME.github.io at the root URL), set env VITE_BASE_URL to / in the Build step below.
+# RSVP: add repo secret VITE_APPS_SCRIPT_URL (Google Apps Script web app /exec URL) so the built site can submit forms.
 #
 # The `install` job warms the pnpm store; other jobs use actions/setup-node `cache: pnpm`
 # (GitHub Actions dependency cache) so `pnpm install` restores from the same cache key.
@@ -85,6 +86,7 @@ jobs:
         run: pnpm run build
         env:
           VITE_BASE_URL: /${{ github.event.repository.name }}/
+          VITE_APPS_SCRIPT_URL: ${{ secrets.VITE_APPS_SCRIPT_URL }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

@@ -7,9 +7,6 @@ export const rsvpFormSchema = z
     phone: z.string(),
     dietary: z.string(),
     companions: z.string(),
-    needsTransport: z.boolean(),
-    accommodation: z.string(),
-    song: z.string(),
     message: z.string(),
     website: z.preprocess(
       (v) => (v === undefined || v === null ? '' : String(v)),
