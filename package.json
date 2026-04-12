@@ -1,0 +1,40 @@
+{
+  "name": "wedding-invitation",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "packageManager": "pnpm@10.12.1",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite-ssg build",
+    "preview": "vite preview",
+    "typecheck": "vue-tsc --build",
+    "lint": "oxlint -c .oxlintrc.json ./src"
+  },
+  "dependencies": {
+    "@unhead/vue": "^2.1.2",
+    "@vee-validate/zod": "^4.15.1",
+    "calendar-link": "^2.11.0",
+    "ics": "^3.8.1",
+    "jose": "^6.1.3",
+    "pinia": "^3.0.4",
+    "vee-validate": "^4.15.1",
+    "vue": "^3.5.25",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "@vitejs/plugin-vue": "^6.0.3",
+    "oxlint": "^1.59.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.7",
+    "vite-plugin-oxlint": "^2.0.1",
+    "vite-ssg": "^28.2.2",
+    "vue-tsc": "^3.1.8"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}

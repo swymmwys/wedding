@@ -1,0 +1,66 @@
+:root {
+  color-scheme: light;
+  --audio-primary: 72 19% 32%;
+  --audio-primary-foreground: 50 25% 88%;
+  --color-ivory: hsl(50 25% 88%);
+  --color-sage: #8a9a84;
+  --color-sage-dark: #3c483c;
+  --color-surface: #ffffff;
+  --color-surface-muted: #fdfcf9;
+  --color-primary: #3c483c;
+  --color-on-primary: #fdfcf9;
+  --color-hero-text: #fdfcf9;
+  --color-text-secondary: rgba(60, 72, 60, 0.78);
+  --color-text-tertiary: rgba(60, 72, 60, 0.55);
+  --color-text-body: rgba(60, 72, 60, 0.88);
+  --color-rule: rgba(60, 72, 60, 0.25);
+  --hero-overlay-top: rgba(247, 245, 240, 0.35);
+  --hero-overlay-bottom: rgba(60, 72, 60, 0.45);
+  /* Accent script (GF) → Typekit → Cyrillic marker script */
+  --font-accent: 'Great Vibes', 'classic-script-mn', 'Marck Script', cursive;
+  --font-script: var(--font-accent);
+  --font-display: 'span', 'Manrope', system-ui, sans-serif;
+  --font-body: 'span', 'Manrope', system-ui, sans-serif;
+  /* “span” only includes weight 200 in Typekit; use for semibold UI */
+  --font-sans-strong: 'Manrope', system-ui, sans-serif;
+  --chrome-bg: rgba(255, 255, 255, 0.88);
+  --chrome-border: rgba(60, 72, 60, 0.12);
+  --chrome-shadow: 0 4px 24px rgba(60, 72, 60, 0.08);
+  --shadow-card: 0 8px 32px rgba(60, 72, 60, 0.08);
+  --color-border-input: rgba(60, 72, 60, 0.2);
+  --color-border-ghost: rgba(60, 72, 60, 0.25);
+  /* Shared shell for invitation blocks under main.home-page */
+  --section-padding: 2rem 1rem;
+  --countdown-section-bg: hsl(72 13% 45%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  /* Typekit “span” ships as weight 200 */
+  font-weight: 200;
+  color: var(--color-sage-dark);
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
