@@ -169,7 +169,7 @@ const timeTo = computed(() =>
 .details-sub {
   margin: 0;
   font-size: 0.875rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-text-body);
   opacity: 0.85;
@@ -198,6 +198,7 @@ const timeTo = computed(() =>
   object-fit: fill;
   pointer-events: none;
   z-index: 0;
+  border-radius: 82px;
 }
 
 .frame-inner {
@@ -244,7 +245,6 @@ const timeTo = computed(() =>
 .venue-name {
   font-family: var(--font-display);
   font-weight: 300;
-  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-sage-dark);
 }

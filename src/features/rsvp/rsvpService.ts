@@ -13,15 +13,12 @@ export async function submitRsvp(payload: RsvpPayload): Promise<void> {
     throw new RsvpConfigurationError('VITE_APPS_SCRIPT_URL is not set')
   }
 
-  const response = await fetch(url, {
+  // Apps Script web apps do not answer OPTIONS with CORS headers; application/json
+  // triggers a preflight. text/plain + no-cors avoids preflight; body stays JSON for doPost.
+  await fetch(url, {
     method: 'POST',
-    mode: 'cors',
-    headers: { 'Content-Type': 'application/json' },
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
     body: JSON.stringify(payload),
   })
-
-  if (!response.ok) {
-    const text = await response.text().catch(() => '')
-    throw new Error(text || `RSVP failed: ${response.status}`)
-  }
 }
