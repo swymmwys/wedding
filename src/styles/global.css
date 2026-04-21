@@ -20,7 +20,7 @@
   --font-accent: 'Great Vibes', 'classic-script-mn', 'Marck Script', cursive;
   --font-script: var(--font-accent);
   --font-display: 'span', 'Manrope', system-ui, sans-serif;
-  --font-body: 'span', 'Manrope', system-ui, sans-serif;
+  --font-body: serfi;
   /* “span” only includes weight 200 in Typekit; use for semibold UI */
   --font-sans-strong: 'Manrope', system-ui, sans-serif;
   --chrome-bg: rgba(255, 255, 255, 0.88);
@@ -31,7 +31,7 @@
   --color-border-ghost: rgba(60, 72, 60, 0.25);
   /* Shared shell for invitation blocks under main.home-page */
   --section-padding: 2rem 1rem;
-  --countdown-section-bg: hsl(72 13% 45%);
+  --countdown-section-bg: hsl(72deg 22.93% 30.28%);
 }
 
 *,

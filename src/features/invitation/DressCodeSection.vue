@@ -9,7 +9,6 @@ import { publicAsset } from '@/lib/publicAsset'
       <ScrollReveal>
         <header class="dress-header">
           <h2 id="dress-heading" class="heading-script">Дресс-код</h2>
-          <p class="sub">Несколько мягких пожеланий</p>
         </header>
       </ScrollReveal>
 
@@ -23,17 +22,13 @@ import { publicAsset } from '@/lib/publicAsset'
           alt=""
         />
         <div class="card">
-          <div class="card-lead">
-            <h3 class="h3">Формальный стиль</h3>
-            <p class="p">
-              Будем благодарны, если вы выберете наряд в духе торжества.
-            </p>
-          </div>
           <p class="p p-note">
-            Просим не надевать белый цвет — он оставлен для невесты.
-          </p>
-          <p class="p p-note">
-            Дамам удобнее на траве и гравии в туфлях на платформе, танкетке или низком каблуке, чем в шпильках.
+            Мы очень трепетно готовим наше торжество и будем благодарны, если вы поддержите его цветовую гамму и стилистику в своих образах. Уверены, вы будете неотразимы! 
+            <br>
+            <br>
+            <hr />
+            <br>
+            Просим вас воздержаться от полностью белых образов, образов с яркими и пестрыми рисунками, спортивной обуви и одежды.
           </p>
         </div>
         </div>
@@ -71,7 +66,7 @@ import { publicAsset } from '@/lib/publicAsset'
 .sub {
   margin: 0 0 1.75rem;
   font-size: 0.875rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-text-tertiary);
   font-family: var(--font-body);
@@ -88,7 +83,7 @@ import { publicAsset } from '@/lib/publicAsset'
   display: block;
   width: 100%;
   height: auto;
-  margin: 0 auto -2rem;
+  margin: 0 auto -2em;
 }
 
 .card {
@@ -96,11 +91,9 @@ import { publicAsset } from '@/lib/publicAsset'
   z-index: 0;
   text-align: left;
   background: var(--color-surface);
-  border-radius: 2rem;
-  padding: 3rem 2rem 2rem;
-  box-shadow:
-    0 2px 15px -3px rgba(58, 69, 52, 0.08),
-    0 4px 6px -2px rgba(58, 69, 52, 0.04);
+  border-radius: 16px;
+  padding: 1.75rem;
+  box-shadow: var(--chrome-shadow);
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -121,16 +114,18 @@ import { publicAsset } from '@/lib/publicAsset'
 }
 
 .p {
-  margin: 0;
-  line-height: 1.625;
-  color: var(--color-text-secondary);
-  font-size: 1rem;
-  font-family: var(--font-body);
-  font-weight: 200;
+  margin: 0 0 0.85rem;
+  line-height: 1.65;
+  color: var(--color-text-body);
+  font-size: 1em;
+}
+
+.p:last-child {
+  margin-bottom: 0;
 }
 
 .p-note {
-  font-size: 0.875rem;
   font-style: italic;
+  text-align: center;
 }
 </style>

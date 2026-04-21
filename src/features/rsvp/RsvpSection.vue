@@ -73,7 +73,6 @@ async function onSubmit(values: Record<string, unknown>): Promise<void> {
     <div class="section-inner">
       <ScrollReveal>
         <h2 class="heading-script">Ответ на приглашение</h2>
-        <p class="lede">Нам очень важно знать, сможете ли вы прийти.</p>
       </ScrollReveal>
 
       <ScrollReveal :y="30">
@@ -172,7 +171,7 @@ async function onSubmit(values: Record<string, unknown>): Promise<void> {
   font-size: clamp(2.25rem, 6vw, 3rem);
   color: var(--color-sage-dark);
   text-align: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.5em;
 }
 
 .lede {
@@ -186,9 +185,9 @@ async function onSubmit(values: Record<string, unknown>): Promise<void> {
 
 .card {
   background: var(--color-surface);
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 1.75rem;
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--chrome-shadow);
 }
 
 .success-card {
@@ -294,7 +293,7 @@ async function onSubmit(values: Record<string, unknown>): Promise<void> {
   text-transform: uppercase;
   color: var(--color-text-secondary);
   text-decoration: underline;
-  text-underline-offset: 0.2em;
+  text-underline-offset: 0.1em;
   cursor: pointer;
 }
 </style>

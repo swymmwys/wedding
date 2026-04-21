@@ -9,15 +9,9 @@ import { publicAsset } from '@/lib/publicAsset'
       <div class="inner">
       <img class="illus" :src="publicAsset('assets/bus-illustration.png')" width="160" height="160" alt="" />
       <h2 id="transport-heading" class="heading-script">Как добраться</h2>
-      <p class="sub">Транспорт</p>
       <div class="card">
         <p class="p">
-          Удобнее всего арендовать автомобиль: так вы сможете свободно путешествовать по региону. На площадке
-          есть бесплатная парковка.
-        </p>
-        <p class="p">
-          Мы рассматриваем организацию трансферов туда и обратно — напишите об этом в форме ответа, если вам это
-          актуально.
+          Мы позаботимся о вашем комфорте и организуем трансфер туда-обратно. Точку отправления трансфера сообщим в общем чате сбора гостей ближе к мероприятию.
         </p>
       </div>
     </div>
@@ -48,7 +42,7 @@ import { publicAsset } from '@/lib/publicAsset'
   font-family: var(--font-script);
   font-size: clamp(2.25rem, 6vw, 3.25rem);
   color: var(--color-sage-dark);
-  margin: 0 0 0.35rem;
+  margin: 0 0 .5em;
 }
 
 .sub {
@@ -71,7 +65,9 @@ import { publicAsset } from '@/lib/publicAsset'
   margin: 0 0 0.85rem;
   line-height: 1.65;
   color: var(--color-text-body);
-  font-size: 0.98rem;
+  font-size: 1em;
+  font-style: italic;
+  text-align: center;
 }
 
 .p:last-child {

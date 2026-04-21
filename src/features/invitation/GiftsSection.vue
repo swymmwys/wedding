@@ -8,8 +8,7 @@ import { publicAsset } from '@/lib/publicAsset'
     <div class="shell">
       <ScrollReveal>
         <header class="gifts-header">
-          <h2 id="gifts-heading" class="heading-script">Подарки</h2>
-          <p class="sub">Сердечная благодарность</p>
+          <h2 id="gifts-heading" class="heading-script">Наши пожелания</h2>
         </header>
       </ScrollReveal>
 
@@ -17,8 +16,17 @@ import { publicAsset } from '@/lib/publicAsset'
         <div class="frame">
         <div class="card">
           <p class="p">
-            Самый ценный подарок для нас — ваше присутствие. Если вы хотите нас порадовать, будем рады конверту
-            или переводу на карту — реквизиты вышлем по запросу.
+            Просим вас не дарить цветы в день свадьбы - к сожалению, в суете праздника они быстро завянут.
+            <br>
+            Если же вам захочется порадовать нас цветами, вы можете оформить для нас цветочную подписку - тогда после свадьбы мы будем получать букеты от вас и ещё долго вспоминать этот особенный день.
+            <br>
+            <br>
+            <a href="" target="_blank">Ссылка на цветочный сервис</a>
+            <br>
+            <br>
+            <hr />
+            <br>
+            Мы безмерно любим малышей и подростков, но этот день мы хотим провести в атмосфере взрослого уюта и спокойствия. Пусть это будет вечер, когда вы сможете отдохнуть, потанцевать и насладиться праздником без забот.
           </p>
         </div>
         <img class="bouquet" :src="publicAsset('assets/flower-bouquet.png')" width="935" height="512" alt="" />
@@ -63,7 +71,7 @@ import { publicAsset } from '@/lib/publicAsset'
 .sub {
   margin: 0 0 2rem;
   font-size: 0.875rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-text-tertiary);
   font-family: var(--font-body);
@@ -81,27 +89,23 @@ import { publicAsset } from '@/lib/publicAsset'
 .card {
   box-sizing: border-box;
   text-align: left;
-  background-color: rgb(255 255 255 / 0.8);
-  border: 1px solid rgb(138 154 132 / 0.3);
-  border-radius: 0.5rem;
-  padding: 2.5rem 2rem 7rem;
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-}
-
-@media (min-width: 768px) {
-  .card {
-    padding-left: 4rem;
-    padding-right: 4rem;
-  }
+  background: var(--color-surface);
+  border-radius: 16px;
+  padding: 1.75rem 1.75rem 7rem;
+  box-shadow: var(--chrome-shadow);
 }
 
 .p {
-  margin: 0;
-  line-height: 1.625;
-  color: var(--color-text-secondary);
-  font-size: 1.125rem;
-  font-family: var(--font-body);
-  font-weight: 200;
+  margin: 0 0 0.85rem;
+  line-height: 1.65;
+  color: var(--color-text-body);
+  font-size: 1em;
+  font-style: italic;
+  text-align: center;
+}
+
+.p:last-child {
+  margin-bottom: 0;
 }
 
 .bouquet {

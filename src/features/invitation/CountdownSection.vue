@@ -39,8 +39,12 @@ onUnmounted(() => {
   <section id="countdown" class="section countdown" aria-labelledby="countdown-heading">
     <ScrollReveal>
       <div class="inner">
-      <h2 id="countdown-heading" class="heading-script">Обратный отсчёт</h2>
-      <p class="sub">До самого особенного дня в нашей жизни</p>
+      <h2 id="countdown-heading" class="heading-script">Дорогие родные и близкие</h2>
+      <p class="sub">
+        Совсем скоро наступит значимый и долгожданный для нас день - наша свадьба! 
+        Мы будем счастливы разделить его в кругу особенно дорогих нам людей. <br><br>
+        С большой нежностью приглашаем вас провести с нами этот день и стать частью нашей истории любви.
+      </p>
       <div class="grid" role="timer" aria-live="polite">
         <div class="cell">
           <span class="num">{{ pad2(days) }}</span>
@@ -74,6 +78,8 @@ onUnmounted(() => {
 
 .inner {
   text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .heading-script {
@@ -92,17 +98,17 @@ onUnmounted(() => {
 
 .sub {
   margin: 0 0 2rem;
-  font-size: 0.875rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  font-size: 1em;
+  letter-spacing: 0.1em;
   color: rgb(255 255 255 / 0.6);
   font-family: var(--font-body);
   font-weight: 200;
+  font-style: italic;
 }
 
 @media (min-width: 768px) {
   .sub {
-    margin-bottom: 3rem;
+    margin-bottom: 2em;
   }
 }
 
@@ -171,7 +177,7 @@ onUnmounted(() => {
 @media (min-width: 768px) {
   .unit {
     margin-top: 0.5rem;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.1em;
   }
 }
 </style>

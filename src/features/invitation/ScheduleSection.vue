@@ -1,18 +1,13 @@
 <script setup lang="ts">
 import ScrollReveal from '@/components/ScrollReveal.vue'
 import { publicAsset } from '@/lib/publicAsset'
-import { weddingEventStart } from '@/setting'
 
 const items = [
-  { time: weddingEventStart.toLocaleTimeString('ru-RU', {
-    hour: '2-digit',
-    minute: '2-digit',
-    timeZone: 'Europe/Minsk',
-  }), title: 'Встреча гостей', body: 'Аперитив и приветственные напитки у виллы' },
+  { time: '15:00', title: 'Встреча гостей', body: 'Аперитив и приветственные напитки' },
   { time: '', title: 'Церемония', body: 'Самый трогательный момент дня' },
-  { time: '', title: 'Коктейль и ужин', body: 'Ужин на свежем воздухе под звёздами' },
-  { time: '', title: 'Вечеринка', body: 'Танцуем до упаду!' },
-  { time: '', title: 'Последний танец', body: 'Прощание и тёплые воспоминания' },
+  { time: '', title: 'Свадебный ужин', body: 'Ужин на свежем воздухе' },
+  { time: '', title: 'Танцы и общение', body: 'Танцуем до упаду!' },
+  { time: '', title: 'Праздничный салют', body: 'Прощание и тёплые объятия' },
 ] as const
 </script>
 
@@ -109,7 +104,7 @@ const items = [
 
 .line {
   width: 1px;
-  height: 4rem;
+  height: 2em;
   background: var(--color-rule);
   margin: 0.25rem 0;
 }
@@ -120,7 +115,7 @@ const items = [
 
 .time {
   font-size: 0.75rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-text-tertiary);
   margin: 0 0 0.35rem;
@@ -136,8 +131,9 @@ const items = [
 
 .body {
   margin: 0;
-  font-size: 0.98rem;
+  font-size: 1em;
   line-height: 1.55;
   color: var(--color-text-body);
+  font-style: italic;
 }
 </style>

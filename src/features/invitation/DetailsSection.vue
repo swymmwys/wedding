@@ -245,7 +245,6 @@ const timeTo = computed(() =>
 .venue-name {
   font-family: var(--font-display);
   font-weight: 300;
-  text-transform: uppercase;
   color: var(--color-sage-dark);
 }
 

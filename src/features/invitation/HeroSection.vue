@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import { computed, nextTick, ref, watch } from 'vue'
+import { computed } from 'vue'
 import { publicAsset } from '@/lib/publicAsset'
 import { weddingHeroDateRu, weddingHeroNames } from '@/setting'
 import { useGuestStore } from '@/stores/guest'
@@ -9,78 +9,28 @@ import { useUiStore } from '@/stores/ui'
 const { guestName } = storeToRefs(useGuestStore())
 const { introHidden } = storeToRefs(useUiStore())
 
-const heroVideoRef = ref<HTMLVideoElement | null>(null)
-const videoEnded = ref(false)
-
 const greeting = computed(() =>
   guestName.value ? `${guestName.value}, мы ждём вас!` : null,
 )
 
-function markHeroFinished(): void {
-  if (videoEnded.value) return
-  videoEnded.value = true
-}
-
-function syncHeroPlayback(): void {
-  const el = heroVideoRef.value
-  if (!el) return
-  if (!introHidden.value) {
-    el.pause()
-    el.currentTime = 0
-    return
-  }
-  if (el.ended) {
-    markHeroFinished()
-    return
-  }
-  if (videoEnded.value) return
-  if (!el.paused) return
-  void el.play().catch(() => {})
-}
-
-function onVideoEnded(): void {
-  markHeroFinished()
-}
-
-/** Some encodings / browsers omit `ended`; treat the tail as complete. */
-function onHeroTimeUpdate(e: Event): void {
-  const el = e.target as HTMLVideoElement
-  if (videoEnded.value || !introHidden.value) return
-  const d = el.duration
-  if (!Number.isFinite(d) || d <= 0) return
-  if (el.currentTime >= d - 0.06) {
-    markHeroFinished()
-  }
-}
-
-watch(introHidden, () => {
-  void nextTick(() => syncHeroPlayback())
-})
-
-watch(heroVideoRef, () => {
-  void nextTick(() => syncHeroPlayback())
-})
+const villaImageUrl = publicAsset('assets/villa-image.png')
 </script>
 
 <template>
   <section class="hero">
-    <div class="hero-video-wrap">
-      <video
-        ref="heroVideoRef"
-        class="hero-video"
-        muted
-        playsinline
-        preload="auto"
-        @click.stop.prevent
-        @ended="onVideoEnded"
-        @timeupdate="onHeroTimeUpdate"
-      >
-        <source :src="publicAsset('assets/hero-video.mp4')" type="video/mp4" />
-      </video>
-    </div>
+    <img
+      class="hero-image"
+      :class="{ 'hero-image--visible': introHidden }"
+      :src="villaImageUrl"
+      width="1536"
+      height="1024"
+      alt=""
+      decoding="async"
+      fetchpriority="high"
+    />
     <div
       class="hero-content"
-      :class="{ 'hero-content--ended': videoEnded, 'hero-content--visible': introHidden }"
+      :class="{ 'hero-content--ended': introHidden, 'hero-content--visible': introHidden }"
     >
       <p class="tagline">Мы женимся</p>
       <h1 class="names">{{ weddingHeroNames }}</h1>
@@ -96,20 +46,26 @@ watch(heroVideoRef, () => {
   min-height: 100vh;
   padding-top: 20vh;
   overflow: hidden;
-  background: var(--color-ivory);
+  background: hsl(72 13% 45%);
 }
 
-.hero-video-wrap {
+/* Match IntroOverlay `.intro-fade-enter-active` (1.2s ease-in-out) for a smooth handoff after the ivory fade completes. */
+.hero-image {
   position: absolute;
   inset: 0;
-}
-
-.hero-video {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   pointer-events: none;
+  box-shadow: 0 0 20px 1px rgb(27 27 27);
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.hero-image--visible {
+  opacity: 1;
 }
 
 .hero-content {
@@ -137,6 +93,10 @@ watch(heroVideoRef, () => {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-image {
+    transition: none;
+  }
+
   .hero-content {
     opacity: 1;
     transform: none;
@@ -173,7 +133,7 @@ watch(heroVideoRef, () => {
 
 .names {
   font-family: var(--font-script);
-  font-size: clamp(2.75rem, 10vw, 4.5rem);
+  font-size: clamp(2.75rem, 10vw, 3.75rem);
   margin: 0 0 0.75rem;
   line-height: 1.1;
 }
@@ -181,7 +141,7 @@ watch(heroVideoRef, () => {
 .date {
   font-family: var(--font-body);
   font-size: clamp(0.8125rem, 2.5vw, 1rem);
-  letter-spacing: 0.2em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   margin: 0 0 1.25rem;
   font-weight: 200;

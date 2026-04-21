@@ -3,6 +3,8 @@ export const weddingHeroNames = 'Александр и Лейла'
 
 /** 15:00–00:00 локальное время (Минск, UTC+3). */
 export const weddingEventStart = new Date('2026-07-27T15:00:00+03:00')
+export const weddingEventCeremonyStart = new Date('2026-07-27T15:00:00+03:00')
+
 export const weddingEventEnd = new Date('2026-07-28T00:00:00+03:00')
 
 export const weddingHeroDateRu = new Intl.DateTimeFormat('ru-RU', {
