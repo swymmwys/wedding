@@ -16,8 +16,8 @@
   --color-rule: rgba(60, 72, 60, 0.25);
   --hero-overlay-top: rgba(247, 245, 240, 0.35);
   --hero-overlay-bottom: rgba(60, 72, 60, 0.45);
-  /* Accent script (GF) → Typekit → Cyrillic marker script */
-  --font-accent: 'Great Vibes', 'classic-script-mn', 'Marck Script', cursive;
+  /* Local Atziluth Script; display stack still uses Typekit “span” + Manrope */
+  --font-accent: 'Atziluth Script', cursive;
   --font-script: var(--font-accent);
   --font-display: 'span', 'Manrope', system-ui, sans-serif;
   --font-body: serfi;

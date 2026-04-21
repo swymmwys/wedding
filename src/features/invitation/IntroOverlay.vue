@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { nextTick, ref, watch } from 'vue'
-import { publicAsset } from '@/lib/publicAsset'
+import introPosterUrl from '@/assets/intro-poster.jpg'
+import introVideoUrl from '@/assets/intro.mp4'
 import { useUiStore } from '@/stores/ui'
 
 const ui = useUiStore()
@@ -132,7 +133,7 @@ watch(phase, (p) => {
   >
     <img
       v-if="phase === 'idle'"
-      :src="publicAsset('assets/intro-poster.jpg')"
+      :src="introPosterUrl"
       alt="Приглашение"
       class="media"
       fetchpriority="high"
@@ -144,8 +145,8 @@ watch(phase, (p) => {
       v-else
       ref="videoRef"
       class="media media--video"
-      :src="publicAsset('assets/intro.mp4')"
-      :poster="publicAsset('assets/intro-poster.jpg')"
+      :src="introVideoUrl"
+      :poster="introPosterUrl"
       playsinline
       :muted="!soundEnabled"
       preload="auto"

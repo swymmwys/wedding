@@ -1,2 +1,7 @@
-/* Great Vibes = accent script; Manrope + Marck Script = Cyrillic / weight fallbacks */
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Manrope:wght@200;300;400;500;600&family=Marck+Script&display=swap&subset=cyrillic,latin');
+@font-face {
+  font-family: 'Atziluth Script';
+  src: url('../assets/fonts/Atziluth-Script.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}

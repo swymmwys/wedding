@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ScrollReveal from '@/components/ScrollReveal.vue'
-import { publicAsset } from '@/lib/publicAsset'
+import coupleDancingUrl from '@/assets/couple-dancing.png'
 
 const items = [
   { time: '15:00', title: 'Встреча гостей', body: 'Аперитив и приветственные напитки' },
@@ -17,7 +17,7 @@ const items = [
       <ScrollReveal>
         <img
           class="header-illus"
-          :src="publicAsset('assets/couple-dancing.png')"
+          :src="coupleDancingUrl"
           width="144"
           height="144"
           alt=""

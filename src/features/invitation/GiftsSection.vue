@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ScrollReveal from '@/components/ScrollReveal.vue'
-import { publicAsset } from '@/lib/publicAsset'
+import flowerBouquetUrl from '@/assets/flower-bouquet.png'
 </script>
 
 <template>
@@ -29,7 +29,7 @@ import { publicAsset } from '@/lib/publicAsset'
             Мы безмерно любим малышей и подростков, но этот день мы хотим провести в атмосфере взрослого уюта и спокойствия. Пусть это будет вечер, когда вы сможете отдохнуть, потанцевать и насладиться праздником без забот.
           </p>
         </div>
-        <img class="bouquet" :src="publicAsset('assets/flower-bouquet.png')" width="935" height="512" alt="" />
+        <img class="bouquet" :src="flowerBouquetUrl" width="935" height="512" alt="" />
         </div>
       </ScrollReveal>
     </div>

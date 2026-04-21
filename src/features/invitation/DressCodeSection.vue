@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ScrollReveal from '@/components/ScrollReveal.vue'
-import { publicAsset } from '@/lib/publicAsset'
+import dressCodeIllustrationUrl from '@/assets/dress-code-illustration.png'
 </script>
 
 <template>
@@ -16,7 +16,7 @@ import { publicAsset } from '@/lib/publicAsset'
         <div class="dress-stack">
         <img
           class="illus"
-          :src="publicAsset('assets/dress-code-illustration.png')"
+          :src="dressCodeIllustrationUrl"
           width="800"
           height="400"
           alt=""

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
-import { publicAsset } from '@/lib/publicAsset'
+import villaImageUrl from '@/assets/villa-image.png'
 import { weddingHeroDateRu, weddingHeroNames } from '@/setting'
 import { useGuestStore } from '@/stores/guest'
 import { useUiStore } from '@/stores/ui'
@@ -13,7 +13,6 @@ const greeting = computed(() =>
   guestName.value ? `${guestName.value}, мы ждём вас!` : null,
 )
 
-const villaImageUrl = publicAsset('assets/villa-image.png')
 </script>
 
 <template>

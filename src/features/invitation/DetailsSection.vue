@@ -2,7 +2,9 @@
 import { computed } from 'vue'
 import ScrollReveal from '@/components/ScrollReveal.vue'
 import { googleCalendarUrl } from '@/lib/calendarDeepLinks'
-import { publicAsset } from '@/lib/publicAsset'
+import dogBouquetUrl from '@/assets/dog-bouquet.png'
+import fincaIllustrationUrl from '@/assets/finca-biniagual-illustration.png'
+import ornateFrameUrl from '@/assets/ornate-frame-new.png'
 import { buildYandexMapsUrl } from '@/lib/yandexMapsUrl'
 import {
   weddingEventEnd,
@@ -36,7 +38,7 @@ const timeTo = computed(() =>
       <div class="details-header">
         <img
           class="details-hero-illus"
-          :src="publicAsset('assets/dog-bouquet.png')"
+          :src="dogBouquetUrl"
           width="144"
           height="144"
           alt=""
@@ -51,7 +53,7 @@ const timeTo = computed(() =>
       <div class="frame-wrap">
         <img
           class="frame-border"
-          :src="publicAsset('assets/ornate-frame-new.png')"
+          :src="ornateFrameUrl"
           width="440"
           height="520"
           alt=""
@@ -81,7 +83,7 @@ const timeTo = computed(() =>
           </div>
             <img
               class="venue-illus"
-              :src="publicAsset('assets/finca-biniagual-illustration.png')"
+              :src="fincaIllustrationUrl"
               alt="" />
         </div>
       </div>

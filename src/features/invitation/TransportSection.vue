@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import ScrollReveal from '@/components/ScrollReveal.vue'
-import { publicAsset } from '@/lib/publicAsset'
+import busIllustrationUrl from '@/assets/bus-illustration.png'
 </script>
 
 <template>
   <section class="section transport" aria-labelledby="transport-heading">
     <ScrollReveal>
       <div class="inner">
-      <img class="illus" :src="publicAsset('assets/bus-illustration.png')" width="160" height="160" alt="" />
+      <img class="illus" :src="busIllustrationUrl" width="160" height="160" alt="" />
       <h2 id="transport-heading" class="heading-script">Как добраться</h2>
       <div class="card">
         <p class="p">

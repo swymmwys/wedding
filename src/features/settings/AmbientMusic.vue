@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { onMounted, ref, watch } from 'vue'
-import { publicAsset } from '@/lib/publicAsset'
+import introMusicUrl from '@/assets/intro-music.mp3'
 import { useUiStore } from '@/stores/ui'
 
 const { soundEnabled, introHidden } = storeToRefs(useUiStore())
@@ -38,7 +38,7 @@ onMounted(syncPlayback)
       loop
       preload="auto"
       playsinline
-      :src="publicAsset('assets/intro-music.mp3')"
+      :src="introMusicUrl"
     />
   </div>
 </template>
