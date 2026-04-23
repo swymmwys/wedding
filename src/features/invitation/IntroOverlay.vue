@@ -1,12 +1,21 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import { nextTick, ref, watch } from 'vue'
+import { nextTick, onUnmounted, ref, watch } from 'vue'
 import introPosterUrl from '@/assets/intro-poster.jpg'
 import introVideoUrl from '@/assets/intro.mp4'
 import { useUiStore } from '@/stores/ui'
 
 const ui = useUiStore()
-const { soundEnabled } = storeToRefs(ui)
+const { soundEnabled, introHidden } = storeToRefs(ui)
+
+watch(
+  introHidden,
+  (hidden) => {
+    if (typeof document === 'undefined') return
+    document.documentElement.classList.toggle('scroll-locked', !hidden)
+  },
+  { immediate: true },
+)
 
 /**
  * Full-screen poster → tap → intro video → overlay fades out (opacity → 0) → main site.
@@ -15,11 +24,17 @@ const { soundEnabled } = storeToRefs(ui)
 /** Start ivory fade this many seconds before the video ends (shortens perceived intro). */
 const INTRO_FADE_LEAD_SECONDS = 1.2
 
+/** Must match `.intro { transition: opacity … }` (ms). */
+const INTRO_FADE_OUT_MS = 1200
+/** Reveal hero / scroll / ambient this many ms before the intro fade-out completes. */
+const HERO_REVEAL_LEAD_MS = 700
+
 type Phase = 'idle' | 'playing' | 'fading'
 
 const phase = ref<Phase>('idle')
 const done = ref(false)
 const videoRef = ref<HTMLVideoElement | null>(null)
+let heroRevealTimer: ReturnType<typeof setTimeout> | undefined
 
 watch(phase, (p) => {
   if (p !== 'playing') return
@@ -114,6 +129,20 @@ watch(phase, (p) => {
   if (p !== 'fading') return
   if (prefersReducedMotion()) {
     void nextTick(() => onFadeOutComplete())
+    return
+  }
+  heroRevealTimer = globalThis.setTimeout(() => {
+    heroRevealTimer = undefined
+    if (phase.value !== 'fading') return
+    ui.markIntroHidden()
+  }, INTRO_FADE_OUT_MS - HERO_REVEAL_LEAD_MS)
+})
+
+onUnmounted(() => {
+  if (typeof document === 'undefined') return
+  document.documentElement.classList.remove('scroll-locked')
+  if (heroRevealTimer !== undefined) {
+    globalThis.clearTimeout(heroRevealTimer)
   }
 })
 </script>
@@ -181,6 +210,13 @@ watch(phase, (p) => {
   height: 100%;
   object-fit: cover;
   display: block;
+
+  @media (min-width: 450px) {
+    max-width: 550px;
+    margin: 0px auto;
+    border-radius: 12px;
+    box-shadow: 0 0 3px 0px;
+  }
 }
 
 /* No taps hit the element — clicks fall through to .intro, which ignores non-idle. */

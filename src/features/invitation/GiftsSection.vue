@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ExternalLinkIcon from '@/components/ExternalLinkIcon.vue'
 import ScrollReveal from '@/components/ScrollReveal.vue'
 import flowerBouquetUrl from '@/assets/flower-bouquet.png'
 </script>
@@ -21,7 +22,7 @@ import flowerBouquetUrl from '@/assets/flower-bouquet.png'
             Если же вам захочется порадовать нас цветами, вы можете оформить для нас цветочную подписку - тогда после свадьбы мы будем получать букеты от вас и ещё долго вспоминать этот особенный день.
             <br>
             <br>
-            <a href="" target="_blank">Ссылка на цветочный сервис</a>
+            <a href="" target="_blank" rel="noopener noreferrer">Ссылка на цветочный сервис<ExternalLinkIcon /></a>
             <br>
             <br>
             <hr />
@@ -44,7 +45,7 @@ import flowerBouquetUrl from '@/assets/flower-bouquet.png'
 }
 
 .shell {
-  max-width: 42rem;
+  max-width: var(--invitation-shell-max-width);
   margin: 0 auto;
   text-align: center;
 }
@@ -80,7 +81,7 @@ import flowerBouquetUrl from '@/assets/flower-bouquet.png'
 
 .frame {
   position: relative;
-  max-width: 32rem;
+  max-width: var(--invitation-card-column-max-width);
   margin: 0 auto;
   padding-bottom: 4rem;
   text-align: left;
@@ -90,8 +91,8 @@ import flowerBouquetUrl from '@/assets/flower-bouquet.png'
   box-sizing: border-box;
   text-align: left;
   background: var(--color-surface);
-  border-radius: 16px;
-  padding: 1.75rem 1.75rem 7rem;
+  border-radius: var(--invitation-card-radius);
+  padding: var(--invitation-card-padding) var(--invitation-card-padding) 7rem;
   box-shadow: var(--chrome-shadow);
 }
 

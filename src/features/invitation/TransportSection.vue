@@ -6,15 +6,17 @@ import busIllustrationUrl from '@/assets/bus-illustration.png'
 <template>
   <section class="section transport" aria-labelledby="transport-heading">
     <ScrollReveal>
-      <div class="inner">
-      <img class="illus" :src="busIllustrationUrl" width="160" height="160" alt="" />
-      <h2 id="transport-heading" class="heading-script">Как добраться</h2>
-      <div class="card">
-        <p class="p">
-          Мы позаботимся о вашем комфорте и организуем трансфер туда-обратно. Точку отправления трансфера сообщим в общем чате сбора гостей ближе к мероприятию.
-        </p>
+      <div class="shell">
+        <img class="illus" :src="busIllustrationUrl" width="160" height="160" alt="" />
+        <h2 id="transport-heading" class="heading-script">Как добраться</h2>
+        <div class="frame">
+          <div class="card">
+            <p class="p">
+              Мы позаботимся о вашем комфорте и организуем трансфер туда-обратно. Точку отправления трансфера сообщим в общем чате сбора гостей ближе к мероприятию.
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
     </ScrollReveal>
   </section>
 </template>
@@ -26,10 +28,15 @@ import busIllustrationUrl from '@/assets/bus-illustration.png'
   background: var(--color-ivory);
 }
 
-.inner {
-  max-width: 36rem;
+.shell {
+  max-width: var(--invitation-shell-max-width);
   margin: 0 auto;
   text-align: center;
+}
+
+.frame {
+  max-width: var(--invitation-card-column-max-width);
+  margin: 0 auto;
 }
 
 .illus {
@@ -54,10 +61,11 @@ import busIllustrationUrl from '@/assets/bus-illustration.png'
 }
 
 .card {
+  box-sizing: border-box;
   text-align: left;
   background: var(--color-surface);
-  border-radius: 16px;
-  padding: 1.75rem;
+  border-radius: var(--invitation-card-radius);
+  padding: var(--invitation-card-padding);
   box-shadow: var(--chrome-shadow);
 }
 

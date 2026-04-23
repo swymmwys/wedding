@@ -19,3 +19,7 @@ export const weddingEventDescription =
   'Церемония и празднование. Дресс-код: формальный. Будем рады видеть вас!'
 export const weddingEventLocation =
   'Комплекс Богдановичей «Двор Стайки»'
+
+/** Ссылка-приглашение в общий чат гостей в Telegram. */
+export const weddingTelegramGroupInviteUrl =
+  'https://t.me/+3KiBJRgs3OMyMjcy'

@@ -23,7 +23,6 @@ const items = [
           alt=""
         />
         <h2 id="schedule-heading" class="heading-script">Программа дня</h2>
-        <p class="sub">Что мы для вас приготовили</p>
       </ScrollReveal>
       <ol class="list">
         <li v-for="(item, i) in items" :key="item.title" class="item">
@@ -57,7 +56,7 @@ const items = [
 }
 
 .inner {
-  max-width: 28rem;
+  max-width: var(--invitation-shell-max-width);
   margin: 0 auto;
   text-align: center;
 }
@@ -74,14 +73,6 @@ const items = [
   font-size: clamp(2.25rem, 6vw, 3.25rem);
   color: var(--color-sage-dark);
   margin: 0 0 0.35rem;
-}
-
-.sub {
-  margin: 0 0 2.5rem;
-  font-size: 0.85rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-text-secondary);
 }
 
 .list {

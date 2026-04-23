@@ -16,9 +16,7 @@ const validationSchema = toTypedSchema(rsvpFormSchema)
 const initialValues = computed(() => ({
   attendance: '' as '' | 'yes' | 'no',
   fullName: guestName.value ?? '',
-  phone: '',
   dietary: '',
-  companions: '',
   message: '',
   website: '',
 }))
@@ -46,9 +44,7 @@ async function onSubmit(values: Record<string, unknown>): Promise<void> {
       guestNameFromToken: guestName.value,
       attendance: v.attendance,
       fullName: v.fullName,
-      phone: v.phone,
       dietary: v.dietary,
-      companions: v.companions,
       message: v.message,
       submittedAt: new Date().toISOString(),
     })
@@ -70,12 +66,13 @@ async function onSubmit(values: Record<string, unknown>): Promise<void> {
 
 <template>
   <section id="rsvp" class="section rsvp">
-    <div class="section-inner">
+    <div class="shell">
       <ScrollReveal>
         <h2 class="heading-script">Ответ на приглашение</h2>
       </ScrollReveal>
 
       <ScrollReveal :y="30">
+        <div class="frame">
         <div v-if="submitSuccess" class="card success-card">
           <p class="success-title">Спасибо!</p>
           <p class="muted">Ваш ответ сохранён. Если что-то изменится — напишите нам.</p>
@@ -114,23 +111,8 @@ async function onSubmit(values: Record<string, unknown>): Promise<void> {
 
           <template v-if="values.attendance === 'yes'">
             <label class="field">
-              <span class="label">Телефон *</span>
-              <Field name="phone" v-slot="{ field, errors }">
-                <input v-bind="field" type="tel" class="input" autocomplete="tel" />
-                <span v-if="errors[0]" class="err">{{ errors[0] }}</span>
-              </Field>
-            </label>
-
-            <label class="field">
-              <span class="label">Аллергии и пожелания по меню</span>
+              <span class="label">Аллергии и другие ограничения</span>
               <Field name="dietary" v-slot="{ field }">
-                <textarea v-bind="field" class="textarea" rows="2" />
-              </Field>
-            </label>
-
-            <label class="field">
-              <span class="label">Кто едет с вами (имена, дети/взрослые)</span>
-              <Field name="companions" v-slot="{ field }">
                 <textarea v-bind="field" class="textarea" rows="2" />
               </Field>
             </label>
@@ -149,6 +131,7 @@ async function onSubmit(values: Record<string, unknown>): Promise<void> {
             {{ submitting ? 'Отправка…' : 'Отправить' }}
           </button>
         </Form>
+        </div>
       </ScrollReveal>
     </div>
   </section>
@@ -161,8 +144,13 @@ async function onSubmit(values: Record<string, unknown>): Promise<void> {
   background: var(--color-ivory);
 }
 
-.section-inner {
-  max-width: 32rem;
+.shell {
+  max-width: var(--invitation-shell-max-width);
+  margin: 0 auto;
+}
+
+.frame {
+  max-width: var(--invitation-card-column-max-width);
   margin: 0 auto;
 }
 
@@ -184,9 +172,10 @@ async function onSubmit(values: Record<string, unknown>): Promise<void> {
 }
 
 .card {
+  box-sizing: border-box;
   background: var(--color-surface);
-  border-radius: 16px;
-  padding: 1.75rem;
+  border-radius: var(--invitation-card-radius);
+  padding: var(--invitation-card-padding);
   box-shadow: var(--chrome-shadow);
 }
 
@@ -212,9 +201,6 @@ async function onSubmit(values: Record<string, unknown>): Promise<void> {
 
 .label {
   display: block;
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   color: var(--color-text-secondary);
   margin-bottom: 0.35rem;
 }

@@ -78,7 +78,7 @@ onUnmounted(() => {
 
 .inner {
   text-align: center;
-  max-width: 500px;
+  max-width: var(--invitation-shell-max-width);
   margin: 0 auto;
 }
 

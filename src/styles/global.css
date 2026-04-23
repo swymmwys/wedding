@@ -31,6 +31,11 @@
   --color-border-ghost: rgba(60, 72, 60, 0.25);
   /* Shared shell for invitation blocks under main.home-page */
   --section-padding: 2rem 1rem;
+  /* GiftsSection reference: outer column + card column + card chrome */
+  --invitation-shell-max-width: 42rem;
+  --invitation-card-column-max-width: 32rem;
+  --invitation-card-padding: 1.75rem;
+  --invitation-card-radius: 16px;
   --countdown-section-bg: hsl(72deg 22.93% 30.28%);
 }
 
@@ -43,10 +48,18 @@
 html {
   scroll-behavior: smooth;
   overflow-x: clip;
+  height: 100%;
+}
+
+/* IntroOverlay.vue — lock page scroll while intro is visible */
+html.scroll-locked,
+html.scroll-locked body {
+  overflow: hidden;
 }
 
 body {
   margin: 0;
+  min-height: 100%;
   font-family: var(--font-body);
   /* Typekit “span” ships as weight 200 */
   font-weight: 200;

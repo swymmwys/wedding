@@ -5,9 +5,7 @@ export interface RsvpPayload {
   guestNameFromToken: string | null
   attendance: RsvpAttendance
   fullName: string
-  phone: string
   dietary: string
-  companions: string
   message: string
   submittedAt: string
 }

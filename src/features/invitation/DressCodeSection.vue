@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import ExternalLinkIcon from '@/components/ExternalLinkIcon.vue'
 import ScrollReveal from '@/components/ScrollReveal.vue'
-import dressCodeIllustrationUrl from '@/assets/dress-code-illustration.png'
+import DressCodeColorPalette from './DressCodeColorPalette.vue'
+import dressCodeIllustrationUrl from '@/assets/dress-code.png'
 </script>
 
 <template>
   <section class="section dress" aria-labelledby="dress-heading">
-    <div class="inner">
+    <div class="shell">
       <ScrollReveal>
         <header class="dress-header">
           <h2 id="dress-heading" class="heading-script">Дресс-код</h2>
@@ -13,24 +15,38 @@ import dressCodeIllustrationUrl from '@/assets/dress-code-illustration.png'
       </ScrollReveal>
 
       <ScrollReveal :y="30">
-        <div class="dress-stack">
-        <img
-          class="illus"
-          :src="dressCodeIllustrationUrl"
-          width="800"
-          height="400"
-          alt=""
-        />
-        <div class="card">
-          <p class="p p-note">
-            Мы очень трепетно готовим наше торжество и будем благодарны, если вы поддержите его цветовую гамму и стилистику в своих образах. Уверены, вы будете неотразимы! 
-            <br>
-            <br>
-            <hr />
-            <br>
-            Просим вас воздержаться от полностью белых образов, образов с яркими и пестрыми рисунками, спортивной обуви и одежды.
-          </p>
-        </div>
+        <div class="frame">
+          <div class="dress-stack">
+            <img
+              class="illus"
+              :src="dressCodeIllustrationUrl"
+              width="800"
+              height="400"
+              alt=""
+            />
+            <div class="card">
+              <p class="p p-note">
+                Мы очень трепетно готовим наше торжество и будем благодарны, если вы поддержите его цветовую гамму и стилистику в своих образах. Уверены, вы будете неотразимы!
+              </p>
+              <DressCodeColorPalette />
+              <p class="p p-note">
+                Просим вас воздержаться от полностью белых образов, образов с яркими и пестрыми рисунками, спортивной обуви и одежды.
+              </p>
+              <p class="p p-note dress-examples">
+                Можете воспользоваться
+                <a
+                  class="dress-examples__link"
+                  href="https://photos.app.goo.gl/Qd5gM2fpxw2BpTyH9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  примерами
+                  <ExternalLinkIcon />
+                </a>
+                для составления образа.
+              </p>
+            </div>
+          </div>
         </div>
       </ScrollReveal>
     </div>
@@ -44,8 +60,13 @@ import dressCodeIllustrationUrl from '@/assets/dress-code-illustration.png'
   background: var(--color-ivory);
 }
 
-.inner {
-  max-width: 36rem;
+.shell {
+  max-width: var(--invitation-shell-max-width);
+  margin: 0 auto;
+}
+
+.frame {
+  max-width: var(--invitation-card-column-max-width);
   margin: 0 auto;
 }
 
@@ -89,10 +110,11 @@ import dressCodeIllustrationUrl from '@/assets/dress-code-illustration.png'
 .card {
   position: relative;
   z-index: 0;
+  box-sizing: border-box;
   text-align: left;
   background: var(--color-surface);
-  border-radius: 16px;
-  padding: 1.75rem;
+  border-radius: var(--invitation-card-radius);
+  padding: var(--invitation-card-padding);
   box-shadow: var(--chrome-shadow);
   display: flex;
   flex-direction: column;
@@ -127,5 +149,28 @@ import dressCodeIllustrationUrl from '@/assets/dress-code-illustration.png'
 .p-note {
   font-style: italic;
   text-align: center;
+}
+
+.dress-examples {
+  font-size: 0.95em;
+}
+
+.dress-examples__link {
+  display: inline;
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--color-text-tertiary);
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 0.04em;
+}
+
+.dress-examples__link:hover,
+.dress-examples__link:focus-visible {
+  text-decoration-color: var(--color-primary);
+}
+
+.dress-examples__link:focus-visible {
+  outline: 2px solid var(--color-sage);
+  outline-offset: 2px;
 }
 </style>
