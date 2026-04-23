@@ -8,6 +8,7 @@ import HeroSection from '@/features/invitation/HeroSection.vue'
 import IntroOverlay from '@/features/invitation/IntroOverlay.vue'
 import ScheduleSection from '@/features/invitation/ScheduleSection.vue'
 import ContactsSection from '@/features/invitation/ContactsSection.vue'
+import CouplePhotoSection from '@/features/invitation/CouplePhotoSection.vue'
 import TransportSection from '@/features/invitation/TransportSection.vue'
 import RsvpSection from '@/features/rsvp/RsvpSection.vue'
 </script>
@@ -25,5 +26,6 @@ import RsvpSection from '@/features/rsvp/RsvpSection.vue'
     <GiftsSection />
     <ContactsSection />
     <RsvpSection />
+    <CouplePhotoSection />
   </main>
 </template>

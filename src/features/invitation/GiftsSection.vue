@@ -56,7 +56,7 @@ import flowerBouquetUrl from '@/assets/flower-bouquet.png'
 
 .heading-script {
   font-family: var(--font-script);
-  font-size: 3rem;
+  font-size: 2.5rem;
   letter-spacing: -0.02em;
   color: var(--color-sage-dark);
   margin: 0 0 0.75rem;

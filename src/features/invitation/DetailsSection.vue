@@ -224,7 +224,7 @@ const timeTo = computed(() =>
 
 .location-script {
   font-family: var(--font-script);
-  font-size: clamp(2.25rem, 6vw, 3rem);
+  font-size: 2.5rem;
   color: var(--color-sage-dark);
   margin: 0 0 0.75rem;
   line-height: 1.1;

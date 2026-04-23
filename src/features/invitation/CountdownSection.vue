@@ -92,7 +92,7 @@ onUnmounted(() => {
 
 @media (min-width: 768px) {
   .heading-script {
-    font-size: clamp(3rem, 6vw, 3.75rem);
+    font-size: clamp(2.5rem, 6vw, 3.75rem);
   }
 }
 
@@ -147,13 +147,13 @@ onUnmounted(() => {
 
 @media (min-width: 640px) {
   .num {
-    font-size: clamp(2.5rem, 10vw, 3rem);
+    font-size: clamp(2.5rem, 10vw, 2.5rem);
   }
 }
 
 @media (min-width: 768px) {
   .num {
-    font-size: clamp(3rem, 12vw, 4.5rem);
+    font-size: clamp(2.5rem, 12vw, 4.5rem);
   }
 }
 

@@ -30,7 +30,7 @@
   --color-border-input: rgba(60, 72, 60, 0.2);
   --color-border-ghost: rgba(60, 72, 60, 0.25);
   /* Shared shell for invitation blocks under main.home-page */
-  --section-padding: 2rem 1rem;
+  --section-padding: 1.5rem 1rem;
   /* GiftsSection reference: outer column + card column + card chrome */
   --invitation-shell-max-width: 42rem;
   --invitation-card-column-max-width: 32rem;
@@ -63,6 +63,7 @@ body {
   font-weight: 200;
   color: var(--color-sage-dark);
   -webkit-font-smoothing: antialiased;
+  background-color:rgb(88, 95, 60);
 }
 
 #app {

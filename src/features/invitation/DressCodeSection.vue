@@ -77,7 +77,7 @@ import dressCodeIllustrationUrl from '@/assets/dress-code.png'
 
 .heading-script {
   font-family: var(--font-script);
-  font-size: clamp(3rem, 9vw, 3.75rem);
+  font-size: clamp(2.5rem, 9vw, 3.75rem);
   letter-spacing: -0.02em;
   color: var(--color-sage-dark);
   margin: 0 0 0.75rem;

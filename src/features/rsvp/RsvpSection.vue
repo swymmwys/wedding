@@ -156,7 +156,7 @@ async function onSubmit(values: Record<string, unknown>): Promise<void> {
 
 .heading-script {
   font-family: var(--font-script);
-  font-size: clamp(2.25rem, 6vw, 3rem);
+  font-size: 2.5rem;
   color: var(--color-sage-dark);
   text-align: center;
   margin-bottom: 0.5em;

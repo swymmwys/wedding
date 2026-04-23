@@ -47,7 +47,7 @@ import busIllustrationUrl from '@/assets/bus-illustration.png'
 
 .heading-script {
   font-family: var(--font-script);
-  font-size: clamp(2.25rem, 6vw, 3.25rem);
+  font-size: 2.5rem;
   color: var(--color-sage-dark);
   margin: 0 0 .5em;
 }
