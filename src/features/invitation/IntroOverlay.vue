@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import { nextTick, onUnmounted, ref, watch } from 'vue'
+import { nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import introPosterUrl from '@/assets/intro-poster.jpg'
 import introVideoUrl from '@/assets/intro.mp4'
 import { useUiStore } from '@/stores/ui'
@@ -138,7 +138,28 @@ watch(phase, (p) => {
   }, INTRO_FADE_OUT_MS - HERO_REVEAL_LEAD_MS)
 })
 
+function onDocumentVisibilityChange(): void {
+  if (typeof document === 'undefined') return
+  if (document.hidden) {
+    const el = videoRef.value
+    if (el) el.pause()
+    return
+  }
+  if (phase.value !== 'playing') return
+  const el = videoRef.value
+  if (!el) return
+  el.muted = !soundEnabled.value
+  void el.play().catch(() => {
+    // Same policy as initial play: stay in playing state; user can retry
+  })
+}
+
+onMounted(() => {
+  document.addEventListener('visibilitychange', onDocumentVisibilityChange)
+})
+
 onUnmounted(() => {
+  document.removeEventListener('visibilitychange', onDocumentVisibilityChange)
   if (typeof document === 'undefined') return
   document.documentElement.classList.remove('scroll-locked')
   if (heroRevealTimer !== undefined) {

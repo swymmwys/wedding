@@ -18,24 +18,20 @@ import {
             </p>
             <div class="organizers">
               <p class="p">
-                Написать Дарье
-                <br />
                 <a
                   class="link"
                   href="https://t.me/darya_alesina"
                   target="_blank"
                   rel="noopener noreferrer"
-                >@darya_alesina<ExternalLinkIcon /></a>
+                >Написать <span class="link-tail">Дарье<ExternalLinkIcon /></span></a>
               </p>
               <p class="p">
-                Написать Виктории
-                <br />
                 <a
                   class="link"
                   href="https://t.me/victoria_kuprovich"
                   target="_blank"
                   rel="noopener noreferrer"
-                >@victoria_kuprovich<ExternalLinkIcon /></a>
+                >Написать <span class="link-tail">Виктории<ExternalLinkIcon /></span></a>
               </p>
             </div>
             <p class="p">
@@ -45,7 +41,7 @@ import {
                 :href="weddingTelegramGroupInviteUrl"
                 target="_blank"
                 rel="noopener noreferrer"
-              >Телеграме<ExternalLinkIcon /></a>.
+              ><span class="link-tail">Телеграме<ExternalLinkIcon /></span></a>.
             </p>
           </div>
         </div>
@@ -115,6 +111,10 @@ import {
 
 .p:last-child {
   margin-bottom: 0;
+}
+
+.link-tail {
+  white-space: nowrap;
 }
 
 .link {

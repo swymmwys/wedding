@@ -41,8 +41,8 @@ const greeting = computed(() =>
 <style scoped>
 .hero {
   position: relative;
-  min-height: 100vh;
-  padding-top: 25vh;
+  min-height: 100dvh;
+  padding-top: 25dvh;
   overflow: hidden;
 }
 

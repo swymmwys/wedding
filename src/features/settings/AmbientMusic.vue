@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, onUnmounted, ref, watch } from 'vue'
 import introMusicUrl from '@/assets/intro-music.mp3'
 import { useUiStore } from '@/stores/ui'
 
@@ -27,7 +27,24 @@ function syncPlayback(): void {
 
 watch([soundEnabled, introHidden], syncPlayback)
 watch(audioRef, syncPlayback)
-onMounted(syncPlayback)
+
+function onDocumentVisibilityChange(): void {
+  const el = audioRef.value
+  if (!el) return
+  if (document.hidden) {
+    el.pause()
+  } else {
+    syncPlayback()
+  }
+}
+
+onMounted(() => {
+  syncPlayback()
+  document.addEventListener('visibilitychange', onDocumentVisibilityChange)
+})
+onUnmounted(() => {
+  document.removeEventListener('visibilitychange', onDocumentVisibilityChange)
+})
 </script>
 
 <template>
