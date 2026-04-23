@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { readStoredSound, WEDDING_SOUND_STORAGE_KEY } from '@/features/settings/soundStorage'
 
 export const useUiStore = defineStore('ui', () => {
-  const soundEnabled = ref(false)
+  const soundEnabled = ref(true)
   /** True after intro overlay has fully finished and unmounted (hero / ambient may run). */
   const introHidden = ref(false)
 
