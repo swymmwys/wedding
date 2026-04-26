@@ -63,7 +63,7 @@ body {
   font-weight: 200;
   color: var(--color-sage-dark);
   -webkit-font-smoothing: antialiased;
-  background-color:rgb(88, 95, 60);
+  background-color: var(--color-ivory)
 }
 
 #app {

@@ -13,9 +13,21 @@ const { guestId, guestName } = storeToRefs(guestStore)
 
 const validationSchema = toTypedSchema(rsvpFormSchema)
 
+/** First word dropped for RSVP name field default; single-word names stay as-is. */
+function rsvpInitialFullNameFromGuestName(name: string | null): string {
+  if (name === null) return ''
+  const trimmed = name.trim()
+  const firstSpace = trimmed.search(/\s/)
+  if (firstSpace === -1) {
+    return trimmed
+  }
+  const afterFirst = trimmed.slice(firstSpace + 1).trim()
+  return afterFirst === '' ? trimmed : afterFirst
+}
+
 const initialValues = computed(() => ({
   attendance: '' as '' | 'yes' | 'no',
-  fullName: guestName.value ?? '',
+  fullName: rsvpInitialFullNameFromGuestName(guestName.value),
   dietary: '',
   message: '',
   website: '',
@@ -90,7 +102,7 @@ async function onSubmit(values: Record<string, unknown>): Promise<void> {
           <Field type="text" name="website" class="hp" autocomplete="off" tabindex="-1" />
             
             <label class="field">
-              <span class="label">Ваше имя (+ имя партнёра) *</span>
+              <span class="label">Имя гостя(ей) *</span>
               <Field name="fullName" v-slot="{ field, errors }">
                 <input v-bind="field" type="text" class="input" autocomplete="name" />
                 <span v-if="errors[0]" class="err">{{ errors[0] }}</span>

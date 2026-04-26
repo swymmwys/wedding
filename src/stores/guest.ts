@@ -12,7 +12,7 @@ export const useGuestStore = defineStore('guest', () => {
 
   function setGuest(payload: GuestIdentity): void {
     guestId.value = payload.id
-    guestName.value = payload.name
+    guestName.value = payload.name.trim()
   }
 
   return { guestId, guestName, setGuest }

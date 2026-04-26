@@ -7,9 +7,11 @@ import dressPalette05 from '@/assets/dress-palette-200/dress-palette-05.jpg'
 import dressPalette06 from '@/assets/dress-palette-200/dress-palette-06.jpg'
 import dressPalette07 from '@/assets/dress-palette-200/dress-palette-07.jpg'
 import dressPalette08 from '@/assets/dress-palette-200/dress-palette-08.jpg'
+import dressPalette09 from '@/assets/dress-palette-200/dress-palette-09.jpeg'
 
 /** Cropped 200×200 sources in sorted `photo_2026-*` order. */
 const PALETTE_IMAGE_URLS: readonly [
+  string,
   string,
   string,
   string,
@@ -27,6 +29,7 @@ const PALETTE_IMAGE_URLS: readonly [
   dressPalette06,
   dressPalette07,
   dressPalette08,
+  dressPalette09,
 ] as const
 </script>
 

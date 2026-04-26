@@ -36,11 +36,12 @@ import couplePhotoUrl from '@/assets/leyla_alexander_photo.jpeg'
   inset: 0;
   z-index: 0;
   display: block;
-  width: 100%;
+  max-width: min(var(--invitation-card-column-max-width), 100%);
+  margin: 0 auto;
   height: 100%;
-  max-width: none;
   object-fit: cover;
   object-position: center;
+  border-radius: var(--invitation-card-radius) var(--invitation-card-radius) 0 0;
 }
 
 .couple-photo-overlay {
@@ -58,7 +59,6 @@ import couplePhotoUrl from '@/assets/leyla_alexander_photo.jpeg'
   margin: 0;
   font-family: var(--font-accent);
   font-size: 1.7em;
-  line-height: 1.4;
   color: var(--color-ivory);
   text-shadow: 0 0 1.5rem rgba(0, 0, 0), 1px 1px 8px rgba(0, 0, 0);
 }

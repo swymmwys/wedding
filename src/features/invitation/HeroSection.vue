@@ -1,17 +1,10 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import { computed } from 'vue'
 import villaImageUrl from '@/assets/villa-image.png'
 import { weddingHeroDateRu, weddingHeroNames } from '@/setting'
-import { useGuestStore } from '@/stores/guest'
 import { useUiStore } from '@/stores/ui'
 
-const { guestName } = storeToRefs(useGuestStore())
 const { introHidden } = storeToRefs(useUiStore())
-
-const greeting = computed(() =>
-  guestName.value ? `${guestName.value}, мы ждём вас!` : null,
-)
 
 </script>
 
@@ -33,7 +26,6 @@ const greeting = computed(() =>
     >
       <h1 class="names">{{ weddingHeroNames }}</h1>
       <p class="date">{{ weddingHeroDateRu }}</p>
-      <p class="greeting">{{ greeting }}</p>
     </div>
   </section>
 </template>

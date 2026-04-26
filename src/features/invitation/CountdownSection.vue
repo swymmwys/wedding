@@ -1,7 +1,17 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
+import { storeToRefs } from 'pinia'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import ScrollReveal from '@/components/ScrollReveal.vue'
 import { weddingEventStart } from '@/setting'
+import { useGuestStore } from '@/stores/guest'
+
+const DEFAULT_COUNTDOWN_HEADING = 'Дорогие родные и близкие'
+
+const { guestName } = storeToRefs(useGuestStore())
+const countdownHeading = computed(() => {
+  const name = guestName.value?.trim()
+  return name !== undefined && name.length > 0 ? name : DEFAULT_COUNTDOWN_HEADING
+})
 
 const target = weddingEventStart.getTime()
 
@@ -39,7 +49,7 @@ onUnmounted(() => {
   <section id="countdown" class="section countdown" aria-labelledby="countdown-heading">
     <ScrollReveal>
       <div class="inner">
-      <h2 id="countdown-heading" class="heading-script">Дорогие родные и близкие</h2>
+      <h2 id="countdown-heading" class="heading-script">{{ countdownHeading }}</h2>
       <p class="sub">
         Совсем скоро наступит значимый и долгожданный для нас день - наша свадьба! 
         Мы будем счастливы разделить его в кругу особенно дорогих нам людей. <br><br>
