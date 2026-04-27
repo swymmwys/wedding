@@ -3,18 +3,7 @@ import {
   encodeGuestNameToTokenPayload,
 } from './guestTokenCodec.ts'
 
-const ID_HEX_PREFIX_LENGTH = 16
-
-async function guestIdFromName(name: string): Promise<string> {
-  const bytes = new TextEncoder().encode(name)
-  const digest = new Uint8Array(await crypto.subtle.digest('SHA-256', bytes))
-  let hex = ''
-  for (const byte of digest) {
-    hex += byte.toString(16).padStart(2, '0')
-  }
-  return hex.slice(0, ID_HEX_PREFIX_LENGTH)
-}
-
+/** Resolved guest from URL param `g`; `id` is the trimmed canonical invite token string. */
 export interface GuestIdentity {
   id: string
   name: string
@@ -25,9 +14,10 @@ export function encodeGuestToG(name: string): string | null {
   return encodeGuestNameToTokenPayload(name)
 }
 
-export async function decodeGuestFromG(g: string): Promise<GuestIdentity | null> {
-  const name = decodeGuestNameFromToken(g)
+export function decodeGuestFromG(g: string): GuestIdentity | null {
+  const trimmed = g.trim()
+  if (!trimmed.length) return null
+  const name = decodeGuestNameFromToken(trimmed)
   if (name === null) return null
-  const id = await guestIdFromName(name)
-  return { id, name }
+  return { id: trimmed, name }
 }

@@ -17,7 +17,7 @@ export const createApp = ViteSSG(
       const params = new URLSearchParams(window.location.search)
       const g = params.get('g')
       if (g) {
-        const guest = await decodeGuestFromG(g)
+        const guest = decodeGuestFromG(g)
         if (guest) useGuestStore().setGuest(guest)
       }
     }
