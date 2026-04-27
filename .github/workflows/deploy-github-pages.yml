@@ -1,8 +1,7 @@
 # Build with Vite SSG and deploy to GitHub Pages.
 # Repo → Settings → Pages → Source: GitHub Actions.
 #
-# Default base path is /REPOSITORY_NAME/ (project site at user.github.io/repo/).
-# For a user/org site (repo named YOUR_USERNAME.github.io at the root URL), set env VITE_BASE_URL to / in the Build step below.
+# Vite base path is set from actions/configure-pages (matches project vs. user/org root site automatically).
 # RSVP: add repo secret VITE_APPS_SCRIPT_URL (Google Apps Script web app /exec URL) so the built site can submit forms.
 #
 # The `install` job warms the pnpm store; other jobs use actions/setup-node `cache: pnpm`
@@ -82,10 +81,12 @@ jobs:
           cache: 'pnpm'
           cache-dependency-path: pnpm-lock.yaml
       - run: pnpm install --frozen-lockfile
+      - uses: actions/configure-pages@v5
+        id: pages
       - name: Build
         run: pnpm run build
         env:
-          VITE_BASE_URL: /${{ github.event.repository.name }}/
+          VITE_BASE_URL: ${{ (steps.pages.outputs.base_path != '' && format('{0}/', steps.pages.outputs.base_path)) || '/' }}
           VITE_APPS_SCRIPT_URL: ${{ secrets.VITE_APPS_SCRIPT_URL }}
       - uses: actions/upload-pages-artifact@v3
         with:
