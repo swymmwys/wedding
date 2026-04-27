@@ -10,7 +10,31 @@ type GuestLine = { real_name: string }
 
 type GuestRow = { token: string; real_name: string }
 
-type AllowedGuestTokensFile = { tokens: string[] }
+type LinkPair = [string, string]
+
+type AllowedGuestTokensFile = { tokens: string[]; links: LinkPair[] }
+
+function readDomainFromCname(projectRootDir: string): string {
+  const cnamePath: string = resolve(projectRootDir, 'CNAME')
+  let text: string
+  try {
+    text = readFileSync(cnamePath, 'utf8')
+  } catch (err) {
+    console.error(`Could not read ${cnamePath} (domain, one line).`)
+    throw err
+  }
+  const domain: string = text.trim()
+  if (domain.length === 0) {
+    throw new Error(`CNAME at ${cnamePath} is empty.`)
+  }
+  return domain
+}
+
+function guestInviteUrl(domain: string, token: string): string {
+  const url: URL = new URL(`https://${domain}/`)
+  url.searchParams.set('g', token)
+  return url.toString()
+}
 
 const CSV_HEADER = 'token,real_name' as const
 
@@ -77,8 +101,12 @@ const csv: string = buildCsvContent(guestRows)
 writeFileSync(outputPath, csv, { encoding: 'utf8' })
 console.log(`Wrote ${outputPath} (${guests.length} row(s) + header).`)
 
+const siteDomain: string = readDomainFromCname(projectRoot)
 const allowedFile: AllowedGuestTokensFile = {
   tokens: guestRows.map((row) => row.token),
+  links: guestRows.map(
+    (row): LinkPair => [row.real_name, guestInviteUrl(siteDomain, row.token)],
+  ),
 }
 const jsonText: string = `${JSON.stringify(allowedFile, null, 2)}\n`
 writeFileSync(allowedTokensJsonPath, jsonText, { encoding: 'utf8' })
