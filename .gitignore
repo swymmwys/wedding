@@ -5,3 +5,6 @@ mirror/
 *.local
 .env
 .env.*.local
+guests.txt
+guest_tokens.csv
+allowed_guest_tokens.json

@@ -1,6 +1,11 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "ignorePatterns": ["mirror/**", "dist/**", "node_modules/**"],
+  "ignorePatterns": [
+    "mirror/**",
+    "dist/**",
+    "node_modules/**",
+    "google-apps-script-rsvp.js"
+  ],
   "plugins": ["typescript", "unicorn", "oxc"],
   "categories": {
     "correctness": "error"

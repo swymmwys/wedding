@@ -53,12 +53,10 @@ async function onSubmit(values: Record<string, unknown>): Promise<void> {
   try {
     await submitRsvp({
       guestId: guestId.value,
-      guestNameFromToken: guestName.value,
       attendance: v.attendance,
       fullName: v.fullName,
       dietary: v.dietary,
       message: v.message,
-      submittedAt: new Date().toISOString(),
     })
     submitSuccess.value = true
   } catch (e) {

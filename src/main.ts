@@ -13,7 +13,7 @@ export const createApp = ViteSSG(
     if (isClient) {
       useUiStore(pinia).hydrateFromStorage()
       const { useGuestStore } = await import('@/stores/guest')
-      const { decodeGuestFromG } = await import('@/features/personalization/decodeGuest')
+      const { decodeGuestFromG } = await import('@wedding/guest-tokens')
       const params = new URLSearchParams(window.location.search)
       const g = params.get('g')
       if (g) {

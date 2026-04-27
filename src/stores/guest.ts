@@ -1,10 +1,8 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import type { GuestIdentity } from '@wedding/guest-tokens'
 
-export interface GuestIdentity {
-  id: string
-  name: string
-}
+export type { GuestIdentity } from '@wedding/guest-tokens'
 
 export const useGuestStore = defineStore('guest', () => {
   const guestId = ref<string | null>(null)
