@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import ExternalLinkIcon from '@/components/ExternalLinkIcon.vue'
 import ScrollReveal from '@/components/ScrollReveal.vue'
 import flowerBouquetUrl from '@/assets/flower-bouquet.png'
 </script>
