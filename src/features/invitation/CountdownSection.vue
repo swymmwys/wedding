@@ -35,6 +35,12 @@ function pad2(n: number): string {
   return String(n).padStart(2, '0')
 }
 
+const invitationWord = computed(() => {
+  if (guestName.value === null) return 'вас'
+
+  return guestName.value.split(' и ').length > 1 ? 'вас' : 'тебя'
+})
+
 onMounted(() => {
   tick()
   timer = setInterval(tick, 1000)
@@ -53,7 +59,7 @@ onUnmounted(() => {
       <p class="sub">
         Совсем скоро наступит значимый и долгожданный для нас день - наша свадьба! 
         Мы будем счастливы разделить его в кругу особенно дорогих нам людей. <br><br>
-        С большой нежностью приглашаем вас провести с нами этот день и стать частью нашей истории любви.
+        С большой нежностью приглашаем {{ invitationWord }} провести с нами этот день и стать частью нашей истории любви.
       </p>
       <div class="grid" role="timer" aria-live="polite">
         <div class="cell">
