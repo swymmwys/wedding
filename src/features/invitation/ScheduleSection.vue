@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import DeferredImage from '@/components/DeferredImage.vue'
 import ScrollReveal from '@/components/ScrollReveal.vue'
-import coupleDancingUrl from '@/assets/couple-dancing.png'
+import coupleDancingUrl from '@/assets/couple-dancing.webp'
 
 const items = [
   { time: '15:00', title: 'Встреча гостей', body: 'Аперитив и приветственные напитки' },
@@ -15,14 +16,12 @@ const items = [
   <section class="section schedule" aria-labelledby="schedule-heading">
     <div class="inner">
       <ScrollReveal>
-        <img
+        <DeferredImage
           class="header-illus"
           :src="coupleDancingUrl"
           width="144"
           height="144"
-          alt=""
-          loading="lazy"
-          decoding="async"
+          alt="Иллюстрация танцующей пары"
         />
         <h2 id="schedule-heading" class="heading-script">Программа дня</h2>
       </ScrollReveal>

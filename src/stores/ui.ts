@@ -4,8 +4,14 @@ import { readStoredSound, WEDDING_SOUND_STORAGE_KEY } from '@/features/settings/
 
 export const useUiStore = defineStore('ui', () => {
   const soundEnabled = ref(true)
+  /** True once the user starts the intro playback flow. */
+  const introStarted = ref(false)
   /** True after intro overlay has fully finished and unmounted (hero / ambient may run). */
   const introHidden = ref(false)
+
+  function markIntroStarted(): void {
+    introStarted.value = true
+  }
 
   function markIntroHidden(): void {
     introHidden.value = true
@@ -29,7 +35,9 @@ export const useUiStore = defineStore('ui', () => {
 
   return {
     soundEnabled,
+    introStarted,
     introHidden,
+    markIntroStarted,
     markIntroHidden,
     setSoundEnabled,
     toggleSound,

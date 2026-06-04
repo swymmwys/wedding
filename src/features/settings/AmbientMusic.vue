@@ -5,9 +5,10 @@ import { useUiStore } from '@/stores/ui'
 
 type IntroMusicModule = typeof import('@/assets/intro-music.mp3')
 
-const { soundEnabled, introHidden } = storeToRefs(useUiStore())
+const { soundEnabled, introStarted, introHidden } = storeToRefs(useUiStore())
 const audioRef = ref<HTMLAudioElement | null>(null)
 const introMusicUrl = ref<string | null>(null)
+let introMusicImportStarted = false
 
 function syncPlayback(): void {
   const el = audioRef.value
@@ -30,6 +31,17 @@ function syncPlayback(): void {
 watch([soundEnabled, introHidden], syncPlayback)
 watch(audioRef, syncPlayback)
 watch(introMusicUrl, syncPlayback)
+watch(
+  introStarted,
+  (started) => {
+    if (!started || introMusicImportStarted) return
+    introMusicImportStarted = true
+    void import('@/assets/intro-music.mp3').then((mod: IntroMusicModule) => {
+      introMusicUrl.value = mod.default
+    })
+  },
+  { immediate: true },
+)
 
 function onDocumentVisibilityChange(): void {
   const el = audioRef.value
@@ -42,9 +54,6 @@ function onDocumentVisibilityChange(): void {
 }
 
 onMounted(() => {
-  void import('@/assets/intro-music.mp3').then((mod: IntroMusicModule) => {
-    introMusicUrl.value = mod.default
-  })
   syncPlayback()
   document.addEventListener('visibilitychange', onDocumentVisibilityChange)
 })

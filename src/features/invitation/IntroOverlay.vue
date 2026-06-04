@@ -71,12 +71,14 @@ function onIntroClick(e: MouseEvent): void {
     return
   }
   scrollBodyToTop()
+  ui.markIntroStarted()
   phase.value = 'playing'
 }
 
 function onIntroKey(): void {
   if (phase.value === 'idle') {
     scrollBodyToTop()
+    ui.markIntroStarted()
     phase.value = 'playing'
   }
 }
@@ -188,17 +190,17 @@ onUnmounted(() => {
     @transitionend="onIntroOpacityTransitionEnd"
   >
     <img
-      v-if="phase === 'idle'"
+      v-if="phase === 'idle' || (phase === 'playing' && !videoCanPlay)"
       :src="introPosterUrl"
       alt="Приглашение"
-      class="media"
+      class="media media--poster"
       fetchpriority="high"
       loading="eager"
       width="1200"
       height="1600"
     />
     <video
-      v-else
+      v-if="phase !== 'idle'"
       ref="videoRef"
       class="media media--video"
       :src="introVideoUrl"
@@ -236,6 +238,8 @@ onUnmounted(() => {
 }
 
 .media {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -248,8 +252,13 @@ onUnmounted(() => {
   }
 }
 
+.media--poster {
+  z-index: 1;
+}
+
 /* No taps hit the element — clicks fall through to .intro, which ignores non-idle. */
 .media--video {
+  z-index: 0;
   pointer-events: none;
   transform-origin: center center;
 }
@@ -266,6 +275,7 @@ onUnmounted(() => {
 
 .tap-hint {
   position: absolute;
+  z-index: 2;
   bottom: 45vh;
   left: 0;
   right: 0;

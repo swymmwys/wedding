@@ -1,13 +1,14 @@
 <script setup lang="ts">
+import DeferredImage from '@/components/DeferredImage.vue'
 import ScrollReveal from '@/components/ScrollReveal.vue'
-import busIllustrationUrl from '@/assets/bus-illustration.png'
+import busIllustrationUrl from '@/assets/bus-illustration.webp'
 </script>
 
 <template>
   <section class="section transport" aria-labelledby="transport-heading">
     <ScrollReveal>
       <div class="shell">
-        <img class="illus" :src="busIllustrationUrl" width="160" height="160" alt="" loading="lazy" decoding="async" />
+        <DeferredImage class="illus" :src="busIllustrationUrl" width="160" height="160" alt="Иллюстрация трансфера на автобусе" />
         <h2 id="transport-heading" class="heading-script">Как добраться</h2>
         <div class="frame">
           <div class="card">

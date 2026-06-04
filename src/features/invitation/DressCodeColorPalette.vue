@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import DeferredImage from '@/components/DeferredImage.vue'
 import dressPalette01 from '@/assets/dress-palette-200/dress-palette-01.jpg'
 import dressPalette02 from '@/assets/dress-palette-200/dress-palette-02.jpg'
 import dressPalette03 from '@/assets/dress-palette-200/dress-palette-03.jpg'
@@ -47,14 +48,12 @@ const PALETTE_IMAGE_URLS: readonly [
         class="palette-cell"
         :style="{ zIndex: i + 1 }"
       >
-        <img
+        <DeferredImage
           class="palette-img"
           :src="src"
           width="200"
           height="200"
-          alt=""
-          loading="lazy"
-          decoding="async"
+          alt="Пример цветовой гаммы дресс-кода"
         />
       </div>
     </div>

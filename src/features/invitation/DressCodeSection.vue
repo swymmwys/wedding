@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import ExternalLinkIcon from '@/components/ExternalLinkIcon.vue'
+import DeferredImage from '@/components/DeferredImage.vue'
 import ScrollReveal from '@/components/ScrollReveal.vue'
 import DressCodeColorPalette from './DressCodeColorPalette.vue'
-import dressCodeIllustrationUrl from '@/assets/dress-code.png'
+import dressCodeIllustrationUrl from '@/assets/dress-code.webp'
 </script>
 
 <template>
@@ -17,14 +18,12 @@ import dressCodeIllustrationUrl from '@/assets/dress-code.png'
       <ScrollReveal :y="30">
         <div class="frame">
           <div class="dress-stack">
-            <img
+            <DeferredImage
               class="illus"
               :src="dressCodeIllustrationUrl"
               width="800"
               height="400"
-              alt=""
-              loading="lazy"
-              decoding="async"
+              alt="Иллюстрация к разделу дресс-кода"
             />
             <div class="card">
               <p class="p p-note">

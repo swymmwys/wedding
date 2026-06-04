@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import villaImageUrl from '@/assets/villa-image.png'
+import { computed } from 'vue'
+import villaImageUrl from '@/assets/villa-image.jpg'
 import { weddingHeroDateRu, weddingHeroNames } from '@/setting'
 import { useUiStore } from '@/stores/ui'
 
-const { introHidden } = storeToRefs(useUiStore())
+const { introHidden, introStarted } = storeToRefs(useUiStore())
+
+const heroImageSrc = computed<string | undefined>(() => {
+  return introStarted.value ? villaImageUrl : undefined
+})
 
 </script>
 
@@ -13,13 +18,14 @@ const { introHidden } = storeToRefs(useUiStore())
     <img
       class="hero-image"
       :class="{ 'hero-image--visible': introHidden }"
-      :src="villaImageUrl"
+      :src="heroImageSrc"
+      alt=""
       width="1536"
       height="1024"
-      alt=""
-      decoding="async"
       fetchpriority="high"
-    />
+      loading="eager"
+      decoding="auto"
+    >
     <div
       class="hero-content"
       :class="{ 'hero-content--visible': introHidden }"

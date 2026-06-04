@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import DeferredImage from '@/components/DeferredImage.vue'
 import ScrollReveal from '@/components/ScrollReveal.vue'
 import { googleCalendarUrl } from '@/lib/calendarDeepLinks'
-import dogBouquetUrl from '@/assets/dog-bouquet.png'
-import fincaIllustrationUrl from '@/assets/finca-biniagual-illustration.png'
-import ornateFrameUrl from '@/assets/ornate-frame-new.png'
+import dogBouquetUrl from '@/assets/dog-bouquet.webp'
+import fincaIllustrationUrl from '@/assets/finca-biniagual-illustration.webp'
+import ornateFrameUrl from '@/assets/ornate-frame-new.webp'
 import { buildYandexMapsUrl } from '@/lib/yandexMapsUrl'
 import {
   weddingEventEnd,
@@ -36,14 +37,12 @@ const timeTo = computed(() =>
   <section class="details-root" aria-labelledby="details-heading">
     <ScrollReveal>
       <div class="details-header">
-        <img
+        <DeferredImage
           class="details-hero-illus"
           :src="dogBouquetUrl"
           width="144"
           height="144"
-          alt=""
-          loading="lazy"
-          decoding="async"
+          alt="Собака с букетом цветов"
         />
         <h2 id="details-heading" class="details-title">Детали</h2>
         <p class="details-sub">Всё, что нужно знать</p>
@@ -53,14 +52,12 @@ const timeTo = computed(() =>
     <ScrollReveal :y="30">
       <div class="details-body">
       <div class="frame-wrap">
-        <img
+        <DeferredImage
           class="frame-border"
           :src="ornateFrameUrl"
           width="440"
           height="520"
-          alt=""
-          loading="lazy"
-          decoding="async"
+          alt="Декоративная винтажная рамка"
         />
         <div class="frame-inner">
           <h3 class="location-script">Место</h3>
@@ -85,12 +82,10 @@ const timeTo = computed(() =>
               <span class="time-text">С {{ timeFrom }} до {{ timeTo }}</span>
             </div>
           </div>
-            <img
+            <DeferredImage
               class="venue-illus"
               :src="fincaIllustrationUrl"
-              alt=""
-              loading="lazy"
-              decoding="async"
+              alt="Иллюстрация места проведения свадьбы"
             />
         </div>
       </div>

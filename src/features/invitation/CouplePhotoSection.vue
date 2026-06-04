@@ -1,17 +1,16 @@
 <script setup lang="ts">
+import DeferredImage from '@/components/DeferredImage.vue'
 import couplePhotoUrl from '@/assets/leyla_alexander_photo.jpeg'
 </script>
 
 <template>
   <section class="couple-photo">
-    <img
+    <DeferredImage
       class="couple-photo-image"
       :src="couplePhotoUrl"
       width="800"
       height="1200"
-      alt=""
-      loading="lazy"
-      decoding="async"
+      alt="Фотография Александра и Лейлы"
     />
     <div class="couple-photo-overlay">
       <p class="couple-photo-text">
