@@ -21,6 +21,8 @@ const items = [
           width="144"
           height="144"
           alt=""
+          loading="lazy"
+          decoding="async"
         />
         <h2 id="schedule-heading" class="heading-script">Программа дня</h2>
       </ScrollReveal>

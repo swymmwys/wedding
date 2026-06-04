@@ -31,7 +31,7 @@ import flowerBouquetUrl from '@/assets/flower-bouquet.png'
             Мы безмерно любим малышей и подростков, но этот день мы хотим провести в атмосфере взрослого уюта и спокойствия. Пусть это будет вечер, когда вы сможете отдохнуть, потанцевать и насладиться праздником без забот.
           </p>
         </div>
-        <img class="bouquet" :src="flowerBouquetUrl" width="935" height="512" alt="" />
+        <img class="bouquet" :src="flowerBouquetUrl" width="935" height="512" alt="" loading="lazy" decoding="async" />
         </div>
       </ScrollReveal>
     </div>

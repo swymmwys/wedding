@@ -23,6 +23,8 @@ import dressCodeIllustrationUrl from '@/assets/dress-code.png'
               width="800"
               height="400"
               alt=""
+              loading="lazy"
+              decoding="async"
             />
             <div class="card">
               <p class="p p-note">

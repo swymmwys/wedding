@@ -42,6 +42,8 @@ const timeTo = computed(() =>
           width="144"
           height="144"
           alt=""
+          loading="lazy"
+          decoding="async"
         />
         <h2 id="details-heading" class="details-title">Детали</h2>
         <p class="details-sub">Всё, что нужно знать</p>
@@ -57,6 +59,8 @@ const timeTo = computed(() =>
           width="440"
           height="520"
           alt=""
+          loading="lazy"
+          decoding="async"
         />
         <div class="frame-inner">
           <h3 class="location-script">Место</h3>
@@ -84,7 +88,10 @@ const timeTo = computed(() =>
             <img
               class="venue-illus"
               :src="fincaIllustrationUrl"
-              alt="" />
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
         </div>
       </div>
 

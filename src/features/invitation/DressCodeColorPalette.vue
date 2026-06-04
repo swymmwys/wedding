@@ -53,6 +53,8 @@ const PALETTE_IMAGE_URLS: readonly [
           width="200"
           height="200"
           alt=""
+          loading="lazy"
+          decoding="async"
         />
       </div>
     </div>

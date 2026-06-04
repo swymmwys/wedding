@@ -10,6 +10,7 @@ import couplePhotoUrl from '@/assets/leyla_alexander_photo.jpeg'
       width="800"
       height="1200"
       alt=""
+      loading="lazy"
       decoding="async"
     />
     <div class="couple-photo-overlay">
