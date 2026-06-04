@@ -11,7 +11,8 @@
     "typecheck": "vue-tsc --build",
     "lint": "oxlint -c .oxlintrc.json ./src",
     "deploy:run": "gh workflow run \"Deploy to GitHub Pages\" --ref main",
-    "generate:guest-tokens": "tsx scripts/generate-guest-tokens.ts"
+    "generate:guest-tokens": "tsx scripts/generate-guest-tokens.ts",
+    "optimize:assets": "tsx scripts/optimize-assets.ts"
   },
   "dependencies": {
     "@wedding/guest-tokens": "workspace:*",
