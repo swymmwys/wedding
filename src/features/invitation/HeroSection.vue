@@ -1,20 +1,66 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import { computed } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import villaImageUrl from '@/assets/villa-image.jpg'
+import HeroScrollIndicator from '@/features/invitation/HeroScrollIndicator.vue'
 import { weddingHeroDateRu, weddingHeroNames } from '@/setting'
 import { useUiStore } from '@/stores/ui'
 
 const { introHidden, introStarted } = storeToRefs(useUiStore())
+const heroSectionRef = ref<HTMLElement | null>(null)
+const isHeroMostlyVisible = ref<boolean>(true)
+const isHeroVisibilityObserved = ref<boolean>(false)
+let heroIntersectionObserver: IntersectionObserver | null = null
 
 const heroImageSrc = computed<string | undefined>(() => {
   return introStarted.value ? villaImageUrl : undefined
 })
 
+const showScrollIndicator = computed<boolean>(() => {
+  return introHidden.value && (!isHeroVisibilityObserved.value || isHeroMostlyVisible.value)
+})
+
+onMounted(() => {
+  if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+    return
+  }
+
+  const heroSectionElement = heroSectionRef.value
+
+  if (heroSectionElement === null) {
+    return
+  }
+
+  heroIntersectionObserver = new IntersectionObserver(
+    (entries) => {
+      const heroEntry = entries[0]
+
+      if (heroEntry === undefined) {
+        return
+      }
+
+      isHeroMostlyVisible.value =
+        heroEntry.isIntersecting && heroEntry.intersectionRatio >= 0.5
+    },
+    {
+      threshold: [0, 0.5, 1],
+    },
+  )
+
+  heroIntersectionObserver.observe(heroSectionElement)
+  isHeroVisibilityObserved.value = true
+})
+
+onBeforeUnmount(() => {
+  heroIntersectionObserver?.disconnect()
+  heroIntersectionObserver = null
+  isHeroVisibilityObserved.value = false
+})
+
 </script>
 
 <template>
-  <section class="hero">
+  <section ref="heroSectionRef" class="hero">
     <img
       class="hero-image"
       :class="{ 'hero-image--visible': introHidden }"
@@ -33,14 +79,15 @@ const heroImageSrc = computed<string | undefined>(() => {
       <h1 class="names">{{ weddingHeroNames }}</h1>
       <p class="date">{{ weddingHeroDateRu }}</p>
     </div>
+    <HeroScrollIndicator v-if="showScrollIndicator" />
   </section>
 </template>
 
 <style scoped>
 .hero {
   position: relative;
-  min-height: 100dvh;
-  padding-top: 25dvh;
+  min-height: 100svh;
+  padding-top: 25svh;
   overflow: hidden;
 }
 
@@ -79,6 +126,13 @@ const heroImageSrc = computed<string | undefined>(() => {
 .hero-content--visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.hero-scroll-indicator {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1.25rem, 4svh, 2.5rem);
+  z-index: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
