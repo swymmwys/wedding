@@ -34,10 +34,12 @@ type Phase = 'idle' | 'playing' | 'fading'
 const phase = ref<Phase>('idle')
 const done = ref(false)
 const videoRef = ref<HTMLVideoElement | null>(null)
+const videoCanPlay = ref(false)
 let heroRevealTimer: ReturnType<typeof setTimeout> | undefined
 
 watch(phase, (p) => {
   if (p !== 'playing') return
+  videoCanPlay.value = false
   void nextTick(() => {
     const el = videoRef.value
     if (!el) return
@@ -138,6 +140,10 @@ watch(phase, (p) => {
   }, INTRO_FADE_OUT_MS - HERO_REVEAL_LEAD_MS)
 })
 
+function onVideoCanPlay(): void {
+  videoCanPlay.value = true
+}
+
 function onDocumentVisibilityChange(): void {
   if (typeof document === 'undefined') return
   if (document.hidden) {
@@ -201,10 +207,13 @@ onUnmounted(() => {
       :muted="!soundEnabled"
       preload="auto"
       @click.stop.prevent
+      @canplay="onVideoCanPlay"
       @ended="onVideoEnded"
       @timeupdate="onIntroTimeUpdate"
     />
-    <p v-if="phase === 'idle'" class="tap-hint">Нажмите, чтобы открыть</p>
+    <p v-if="phase === 'idle' || (phase === 'playing' && !videoCanPlay)" class="tap-hint">
+      {{ phase === 'idle' ? 'Нажмите, чтобы открыть' : 'Открываем...' }}
+    </p>
   </div>
 </template>
 
@@ -235,7 +244,6 @@ onUnmounted(() => {
   @media (min-width: 450px) {
     max-width: 550px;
     margin: 0px auto;
-    border-radius: 12px;
     box-shadow: 0 0 3px 0px;
   }
 }
