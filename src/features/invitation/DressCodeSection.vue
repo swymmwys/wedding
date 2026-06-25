@@ -33,19 +33,6 @@ import dressCodeIllustrationUrl from '@/assets/dress-code.webp'
               <p class="p p-note">
                 Просим вас воздержаться от полностью белых образов, образов с яркими и пестрыми рисунками, спортивной обуви и одежды.
               </p>
-              <p class="p p-note dress-examples">
-                Можете воспользоваться
-                <a
-                  class="dress-examples__link"
-                  href="https://photos.app.goo.gl/Qd5gM2fpxw2BpTyH9"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  примерами
-                  <ExternalLinkIcon />
-                </a>
-                для составления образа.
-              </p>
             </div>
           </div>
         </div>

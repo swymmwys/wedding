@@ -22,7 +22,7 @@ import flowerBouquetUrl from '@/assets/flower-bouquet.webp'
             Если же вам захочется порадовать нас цветами, вы можете оформить для нас цветочную подписку - тогда после свадьбы мы будем получать букеты от вас и ещё долго вспоминать этот особенный день.
             <br>
             <br>
-            Ссылку на цветочный сервис мы добавим в ближайшее время.
+            <a class="link" href="https://vetkakvetka.by/podpiska-alex-leila/" target="_blank" rel="noopener noreferrer"><span class="link-tail">Ссылка<ExternalLinkIcon /></span></a> на цветочный сервис 💐.
             <br>
             <br>
           </p>
@@ -109,6 +109,21 @@ import flowerBouquetUrl from '@/assets/flower-bouquet.webp'
 
 .p:last-child {
   margin-bottom: 0;
+}
+
+.link-tail {
+  white-space: nowrap;
+}
+
+.link {
+  color: var(--color-sage-dark);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  font-style: italic;
+}
+
+.link:hover {
+  opacity: 0.88;
 }
 
 .bouquet {
