@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import ExternalLinkIcon from '@/components/ExternalLinkIcon.vue'
 import DeferredImage from '@/components/DeferredImage.vue'
 import ScrollReveal from '@/components/ScrollReveal.vue'
 import DressCodeColorPalette from './DressCodeColorPalette.vue'
